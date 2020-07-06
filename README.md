@@ -1,6 +1,6 @@
 # brian's GitHub Actions
 
-My personal GitHub Actions for testing Perl modules. These files go in _.github/workflows/_ in each repo.
+My personal GitHub Actions for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE)
 
 * [macOS](perl-module-macos.yml)
 * [Ubuntu](perl-module-ubuntu.yml)
