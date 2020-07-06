@@ -1,3 +1,6 @@
+# brian's standard GitHub Actions Ubuntu config for Perl 5 modules
+# https://github.com/briandfoy/github_actions
+# This file is licensed under the Artistic License 2.0
 name: ubuntu
 
 on:
