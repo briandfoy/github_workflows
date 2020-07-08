@@ -1,6 +1,6 @@
-# brian's GitHub Actions
+ t# brian's GitHub Actions
 
-My personal GitHub Actions for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE)
+My personal [GitHub Actions](https://github.com/features/actions) for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE)
 
 * [macOS](perl-module-macos.yml)
 * [Ubuntu](perl-module-ubuntu.yml)
@@ -13,3 +13,8 @@ My personal GitHub Actions for testing Perl modules. These files go in _.github/
 * [GitHub Action for Perl Critic](https://github.com/marketplace/actions/github-action-for-perl-critic)
 * [First steps with Github workflows](https://www.claudiokuenzler.com/blog/913/first-steps-github-actions-code-syntax-validation)
 * [Setup Perl environment](https://github.com/marketplace/actions/setup-perl-environment)
+
+## You might also like
+
+* [brian's Standard Configuration for Perl 5 Modules on AppVeyor](https://github.com/briandfoy/brians_perl_modules_appveyor_config)
+* [brian's Standard Configuration for Perl 5 Modules on Travis CI](https://github.com/briandfoy/brians_perl_modules_travis_config)
