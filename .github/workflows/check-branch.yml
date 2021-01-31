@@ -14,6 +14,13 @@ on:
             - '*'
 
 jobs:
+    show_github_context:
+        runs-on: macos-latest
+        steps:
+            - name: github_context
+              env:
+                GITHUB_CONTEXT: ${{ toJSON(github) }}
+              run: echo "$GITHUB_CONTEXT"
     mac-check-commit-message:
         runs-on: macos-latest
         if: "contains(github.ref, 'refs/heads/**macos')"
