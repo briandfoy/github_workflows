@@ -12,6 +12,14 @@ on:
     push:
         branches:
             - '*'
+# To play with this, choose which OS you want to exclude. Suppose that's
+# macOS. Make a branch that starts with 'macos' after a / (so, macos at
+# the start or a topic branch like topic/macos). Commit and push.
+#
+# This is probably tricky, but conceivably you could make a branch like
+# ubuntu/macos/windows and all of these would trigger. That way you
+# can construct a branch that selects more than one job to run
+
 
 jobs:
     mac-check-commit-message:

@@ -13,6 +13,11 @@ on:
         branches:
             - '*'
 
+# To play with this, choose which OS you want to exclude. Suppose that's
+# macOS. Make a commit, put '#no-macos' somewhere (anywhere) in the commit
+# message, and push. This has to be the HEAD commit, so don't make other
+# commits.
+
 jobs:
     mac-check-commit-message:
         runs-on: macos-latest
