@@ -9,15 +9,6 @@
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
 name: branches-ignore
 
-on:
-    push:
-# You can either use branches or branches-ignore, but not both. This
-# one ignores only the branches that denote a different OS. This means
-# that this action will run in all cases but ignore targeted cases.
-# That is, this action runs most of the time
-        branches-ignore:
-            - 'macos-**'
-            - 'windows-**'
 jobs:
     macos:
         runs-on: macos-latest
