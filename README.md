@@ -8,7 +8,25 @@ My personal [GitHub Actions](https://github.com/features/actions) for testing Pe
 
 ## Some other demonstrations
 
-You can trigger or ignore an action by the branch name. With a pattern in `branches`, you run that action only when the branch matches the pattern.
+I can trigger or ignore workflows or individual jobs. I'm mostly interested in switching on:
+
+* branch name
+* commit message
+
+### Paying attention to things
+
+A workflow or a job can run when a
+
+* [workflow runs only if a branch matches](branches-macos.yml)
+
+### Ignoring things
+
+Sometimes I have a problem with one platform or part of the system. I
+want to run some actions but not others. Instead of queueing all these builds and hoping the one I want runs soon, I just ignore a lot of them.
+
+* [workflow ignores certain branches](.github/workflows/branches-ignore-macos-ubuntu.yml)
+* [jobs ignore certain branches](.github/workflows/check-branch.yml)
+* [check for flags in the commit message](.github/workflows/check-commit-message.yml)
 
 
 ## See Also
