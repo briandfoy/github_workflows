@@ -1,11 +1,11 @@
 # brian's GitHub Actions demonstrations
-# Don't run this action when the branch name lists a different OS
-# This means that you can target an action by branch name
+# This file is licensed under the Artistic License 2.0
+#
+# Only run this workflow when the branch contains a particular substring
 #
 # https://github.com/briandfoy/github_actions
 # https://github.com/features/actions
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
-# This file is licensed under the Artistic License 2.0
 name: branches-windows
 
 on:
