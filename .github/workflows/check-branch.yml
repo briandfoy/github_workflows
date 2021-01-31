@@ -1,7 +1,7 @@
 # brian's GitHub Actions demonstrations
 # This file is licensed under the Artistic License 2.0
 #
-# Each step can match against the git ref
+# Each step can look for a substring the git ref (branch or tag)
 #
 # https://github.com/briandfoy/github_actions
 # https://github.com/features/actions
