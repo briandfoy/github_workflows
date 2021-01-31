@@ -1,0 +1,45 @@
+# brian's GitHub Actions demonstrations
+# This file is licensed under the Artistic License 2.0
+#
+# Don't run this action when the branch name lists a different OS
+# This means that you can target an action by branch name
+#
+# https://github.com/briandfoy/github_actions
+# https://github.com/features/actions
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
+name: branches-ignore
+
+on:
+    push:
+# You can either use branches or branches-ignore, but not both. This
+# one ignores only the branches that denote a different OS. This means
+# that this action will run in all cases but ignore targeted cases.
+# That is, this action runs most of the time
+        branches-ignore:
+            - 'macos-**'
+            - 'windows-**'
+jobs:
+    macos:
+        runs-on: macos-latest
+        branches-ignore:
+            - 'ubuntu-**'
+            - 'windows-**'
+        steps:
+            - name: Just pass
+              run: true
+    ubuntu:
+        runs-on: ubuntu-latest
+        branches-ignore:
+            - 'macos-**'
+            - 'windows-**'
+        steps:
+            - name: Just pass
+              run: true
+    windows:
+        runs-on: windows-2019
+        branches-ignore:
+            - 'macos-**'
+            - 'ubuntu-**'
+        steps:
+            - name: Just pass
+              run: true
