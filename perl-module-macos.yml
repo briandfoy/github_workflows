@@ -1,5 +1,6 @@
 # brian's standard GitHub Actions macOS config for Perl 5 modules
 # https://github.com/briandfoy/github_actions
+# https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
 name: macos
 
@@ -23,9 +24,45 @@ jobs:
               run: brew install perl
             - name: Perl version check
               run: perl -V
+# cpan can operate with https, but we need IO::SSL::Socket, which
+# does not come with Perl.
+#
+# When using cpan, use -M to specify the CDN-backed www.cpan.org
+# mirror. I've noticed that letting CPAN.pm auto-choose mirrors
+# sometimes selects things that the action can't reach.
+#
+# Also, use the -T option to not test the dependencies. Assume these
+# mainline modules are good and save lots of CI minutes.
             - name: Prepare cpan
               run: |
                 openssl version
-                cpan Net::SSLeay IO::Socket::SSL ExtUtils::MakeMaker
-            - name: Install
-              run: cpan .
+                cpan -M http://www.cpan.org -T IO::Socket::SSL
+                cpan -M https://www.cpan.org -T ExtUtils::MakeMaker
+# Install the dependencies, again not testing them. This installs the
+# module in the current directory, so we end up installing the module,
+# but that's not a big deal.
+            - name: Install dependencies
+              run: |
+                cpan -M https://www.cpan.org -T .
+            - name: Run tests
+              run: |
+                perl Makefile.PL
+                make test
+# Running tests in parallel should be faster, but it's also more
+# tricky in cases where different tests share a feature, such as a
+# file they want to write to. Parallel tests can stomp on each other.
+# Test in parallel to catch that, because other people will test your
+# stuff in parallel.
+            - name: Run tests in parallel
+              run: |
+                perl Makefile.PL
+                HARNESS_OPTIONS=j10 make test
+# The disttest target creates the distribution, unwraps it, changes
+# into the dist dir, then runs the tests there. That checks that
+# everything that should be in the dist is in the dist. If you forget
+# to update MANIFEST with new modules, data files, and so on, you
+# should notice the error.
+            - name: Run distribution tests
+              run: |
+                perl Makefile.PL
+                make disttest
