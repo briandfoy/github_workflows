@@ -1,0 +1,31 @@
+# brian's standard GitHub Actions macOS config for Perl 5 modules
+# https://github.com/briandfoy/github_actions
+# https://github.com/features/actions
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
+# This file is licensed under the Artistic License 2.0
+name: check-commit-message
+
+on:
+    push:
+        branches:
+            - '*'
+
+jobs:
+    mac-check-commit-message:
+        runs-on: macos-latest
+        if: "contains(github.ref, 'refs/heads/**macos')"
+        steps:
+            - name: Just pass
+              run: true
+    ubuntu-check-commit-message:
+        runs-on: ubuntu-latest
+        if: "contains(github.ref, 'refs/heads/**ubuntu')"
+        steps:
+            - name: Just pass
+              run: true
+    windows-check-commit-message:
+        runs-on: windows-latest
+        if: "contains(github.ref, 'refs/heads/**windows')"
+        steps:
+            - name: Just pass
+              run: exit 0
