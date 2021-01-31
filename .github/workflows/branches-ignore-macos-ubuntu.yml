@@ -25,4 +25,4 @@ jobs:
             - name: Platform check
               run: uname -a
             - name: Just pass
-              run: exit /b 0
+              run: exit 0
