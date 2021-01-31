@@ -6,6 +6,11 @@ My personal [GitHub Actions](https://github.com/features/actions) for testing Pe
 * [Ubuntu](perl-module-ubuntu.yml)
 * [Windows](perl-module-windows.yml)
 
+## Some other demonstrations
+
+You can trigger or ignore an action by the branch name. With a pattern in `branches`, you run that action only when the branch matches the pattern.
+
+
 ## See Also
 
 * [perl-github-actions-sample](https://github.com/skaji/perl-github-actions-sample)
