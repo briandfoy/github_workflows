@@ -10,7 +10,7 @@ name: branches-ubuntu
 
 on:
     push:
-# this will only run on branches starting with the string 'macos',
+# this will only run on branches starting with the string 'ubuntu',
 # and not otherwise. You can effectively turn off the action unless
 # the branch name targets it.
         branches:

@@ -10,7 +10,7 @@ name: branches-windows
 
 on:
     push:
-# this will only run on branches starting with the string 'macos',
+# this will only run on branches starting with the string 'windows',
 # and not otherwise. You can effectively turn off the action unless
 # the branch name targets it.
         branches:
