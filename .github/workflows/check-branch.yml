@@ -14,28 +14,21 @@ on:
             - '*'
 
 jobs:
-    show_github_context:
-        runs-on: macos-latest
-        steps:
-            - name: github_context
-              env:
-                GITHUB_CONTEXT: ${{ toJSON(github) }}
-              run: echo "$GITHUB_CONTEXT"
     mac-check-commit-message:
         runs-on: macos-latest
-        if: "contains(github.ref, 'refs/heads/**macos')"
+        if: "contains(github.ref, '/macos')"
         steps:
             - name: Just pass
               run: true
     ubuntu-check-commit-message:
         runs-on: ubuntu-latest
-        if: "contains(github.ref, 'refs/heads/**ubuntu')"
+        if: "contains(github.ref, '/ubuntu')"
         steps:
             - name: Just pass
               run: true
     windows-check-commit-message:
         runs-on: windows-latest
-        if: "contains(github.ref, 'refs/heads/**windows')"
+        if: "contains(github.ref, '/windows')"
         steps:
             - name: Just pass
               run: exit 0
