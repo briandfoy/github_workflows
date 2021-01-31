@@ -9,6 +9,9 @@
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
 name: branches-ignore
 
+on:
+    push:
+
 jobs:
     macos:
         runs-on: macos-latest
