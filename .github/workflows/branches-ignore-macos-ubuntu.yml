@@ -15,7 +15,8 @@ on:
 # that this action will run in all cases but ignore targeted cases.
 # That is, this action runs most of the time
         branches-ignore:
-            - '{ubuntu,macos}-*'
+            - 'ubuntu**'
+            - 'macos**'
 jobs:
     check:
         runs-on: windows-2019

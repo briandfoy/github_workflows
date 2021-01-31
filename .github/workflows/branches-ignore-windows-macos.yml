@@ -15,7 +15,8 @@ on:
 # that this action will run in all cases but ignore targeted cases.
 # That is, this action runs most of the time
         branches-ignore:
-            - '{windows,macos}-*'
+            - 'macos-**'
+            - 'windows-**'
 jobs:
     check:
         runs-on: ubuntu-latest
