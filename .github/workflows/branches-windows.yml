@@ -6,7 +6,7 @@
 # https://github.com/features/actions
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
 # This file is licensed under the Artistic License 2.0
-name: macos
+name: branches-windows
 
 on:
     push:
@@ -16,7 +16,7 @@ on:
         branches:
             - 'windows-*'
 jobs:
-    perl:
+    check:
         runs-on: macOS-latest
 
         steps:

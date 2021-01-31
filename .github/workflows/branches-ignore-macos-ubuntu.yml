@@ -6,7 +6,7 @@
 # https://github.com/features/actions
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
 # This file is licensed under the Artistic License 2.0
-name: macos
+name: branches-ignore-macos-ubuntu
 
 on:
     push:
@@ -17,7 +17,7 @@ on:
         branches-ignore:
             - '{ubuntu,macos}-*'
 jobs:
-    perl:
+    check:
         runs-on: windows-2019
 
         steps:

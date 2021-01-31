@@ -3,7 +3,7 @@
 # https://github.com/features/actions
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
 # This file is licensed under the Artistic License 2.0
-name: macos
+name: branches-ubuntu
 
 on:
     push:
@@ -13,7 +13,7 @@ on:
         branches:
             - 'ubuntu-*'
 jobs:
-    perl:
+    check:
         runs-on: ubuntu-latest
 
         steps:
