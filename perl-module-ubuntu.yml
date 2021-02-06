@@ -62,7 +62,7 @@ jobs:
             - name: Install cpanm and multiple modules
               run: |
                 curl -L https://cpanmin.us | perl - App::cpanminus
-                cpanm --notest IO::Socket::SSL App::Cpan
+                cpanm --notest IO::Socket::SSL App::Cpan LWP::Protocol::https
                 cpan -M https://www.cpan.org -T ExtUtils::MakeMaker
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
