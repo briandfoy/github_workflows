@@ -33,7 +33,10 @@ jobs:
             - name: Platform check
               run: uname -a
             - name: Set up Perl
-              run: brew install perl
+              run: |
+                brew install perl
+                ls -d /usr/local/Cellar/perl/*/bin | head -1 >> $GITHUB_PATH
+                perl -v | perl -0777 -ne 'm/(v5\.\d+)/ && print "PERL_VERSION=$1"' >> $GITHUB_ENV
             - name: Perl version check
               run: perl -V
 # cpan can operate with https, but we need IO::SSL::Socket, which
@@ -78,8 +81,12 @@ jobs:
               run: |
                 perl Makefile.PL
                 make disttest
-# And, coverage reports
+# And, coverage reports, but only under 5.10 and later since modern
+# Devel::Cover instances don't work with 5.8
             - name: Run coverage tests
+              if: env.PERL_VERSION != 'v5.8'
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                 cpan -M https://www.cpan.org -T Devel::Cover Devel::Cover::Report::Coveralls
                 cover -test -report coveralls

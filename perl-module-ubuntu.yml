@@ -55,7 +55,9 @@ jobs:
             - name: Platform check
               run: uname -a
             - name: Perl version check
-              run: perl -V
+              run: |
+                perl -V
+                perl -v | perl -0777 -ne 'm/(v5\.\d+)/ && print "PERL_VERSION=$1"' >> $GITHUB_ENV
 # I had some problems with openssl on Ubuntu, so I punted by installing
 # cpanm first, which is easy. I can install IO::Socket::SSL with that,
 # then switch back to cpan. I didn't explore this further, but what you
@@ -93,8 +95,10 @@ jobs:
               run: |
                 perl Makefile.PL
                 make disttest
-# And, coverage reports
+# And, coverage reports, but only under 5.10 and later since modern
+# Devel::Cover instances don't work with 5.8
             - name: Run coverage tests
+              if: env.PERL_VERSION != 'v5.8'
               run: |
                 cpan -M https://www.cpan.org -T Devel::Cover Devel::Cover::Report::Coveralls
                 cover -test -report coveralls
