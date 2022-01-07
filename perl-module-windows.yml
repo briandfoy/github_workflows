@@ -29,6 +29,8 @@ on:
 jobs:
     perl:
         runs-on: ${{ matrix.os }}
+        # store any secrets in an environment named "testing"
+        environment: testing
         strategy:
           matrix:
             os:
@@ -75,7 +77,11 @@ jobs:
                 perl Makefile.PL
                 make disttest
 # And, coverage reports
+# The Coveralls.io key can be kept in the COVERALLS_REPO_TOKEN secret
             - name: Run coverage tests
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
               run: |
                 cpan -M https://www.cpan.org -T Devel::Cover Devel::Cover::Report::Coveralls
                 cover -test -report coveralls
