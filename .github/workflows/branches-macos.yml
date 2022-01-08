@@ -18,7 +18,6 @@ on:
 jobs:
     check:
         runs-on: macos-latest
-
         steps:
             - uses: actions/checkout@v2
             - name: Platform check
