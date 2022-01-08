@@ -17,11 +17,8 @@ on:
 jobs:
     check:
         runs-on:
-            strategy:
-              matrix:
-                os:
-                    - ubuntu-latest
-                    - macos-latest
+            - ubuntu-latest
+            - macos-latest
         steps:
             - uses: actions/checkout@v2
             - name: Platform check
