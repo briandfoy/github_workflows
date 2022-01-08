@@ -16,12 +16,12 @@ on:
             - '!**windows'
 jobs:
     check:
-        strategy:
-          matrix:
-            os:
-                - ubuntu-latest
-                - macos-latest
-
+        runs-on:
+            strategy:
+              matrix:
+                os:
+                    - ubuntu-latest
+                    - macos-latest
         steps:
             - uses: actions/checkout@v2
             - name: Platform check
