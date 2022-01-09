@@ -52,7 +52,7 @@ jobs:
             - name: Prepare cpan
               run: |
                 openssl version
-                cpan -M http://www.cpan.org -T IO::Socket::SSL LWP::Protocol::https
+                cpan -M http://www.cpan.org -T IO::Socket::SSL HTTP::Tiny
                 cpan -M https://www.cpan.org -T ExtUtils::MakeMaker Test::Manifest
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
