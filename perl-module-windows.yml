@@ -1,4 +1,5 @@
 # brian's standard GitHub Actions Windows config for Perl 5 modules
+# version 20220118.001
 # https://github.com/briandfoy/github_actions
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
