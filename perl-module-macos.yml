@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions macOS config for Perl 5 modules
-# version 20220118.001
+# version 20220120.001
 # https://github.com/briandfoy/github_actions
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -83,6 +83,7 @@ jobs:
               run: |
                 perl Makefile.PL
                 make disttest
+                make clean
 # And, coverage reports, but only under 5.10 and later since modern
 # Devel::Cover instances don't work with 5.8
             - name: Run coverage tests
