@@ -20,7 +20,7 @@ jobs:
               id: names
             - name: archive
               run: |
-                mdkir -p ${{ steps.names.outputs.dir }}
+                mkdir -p ${{ steps.names.outputs.dir }}
                 cp CITATION.cff LICENSE README.md *.yml ${{ steps.names.outputs.dir }}
                 tar -czf ${{ steps.names.outputs.dist }} ${{ steps.names.outputs.dir }}
             - name: release
