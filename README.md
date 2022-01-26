@@ -1,6 +1,8 @@
- # brian's GitHub Actions
+ # brian's Perl Module GitHub Actions
 
-My personal [GitHub Actions](https://github.com/features/actions) for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5904482.svg)](https://doi.org/10.5281/zenodo.5904482)
+
+My personal [GitHub workflows](https://github.com/features/actions) for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE)
 
 * [macOS](perl-module-macos.yml)
 * [Ubuntu](perl-module-ubuntu.yml)
