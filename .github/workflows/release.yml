@@ -14,8 +14,9 @@ jobs:
               run: echo "::set-output name=version::$(grep '# version' *.yml | awk '{ print $3 }' | sort | tail -1)"
               id: version
             - name: names
-              run: echo "::set-output name=dir::brians-perl-module-github-workflows-${{ steps.version.outputs.version }}"
-              run: echo "::set-output name=dist::brians-perl-module-github-workflows-${{ steps.version.outputs.version }}.tar.gz"
+              run: |
+                echo "::set-output name=dir::brians-perl-module-github-workflows-${{ steps.version.outputs.version }}"
+                echo "::set-output name=dist::brians-perl-module-github-workflows-${{ steps.version.outputs.version }}.tar.gz"
               id: names
             - name: archive
               run: |
