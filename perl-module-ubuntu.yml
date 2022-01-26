@@ -11,6 +11,7 @@ on:
             - '**'
             - '!**windows**'
             - '!**macos**'
+            - '!**release**'
         tags-ignore:
             # I tag release pushes but those should have already been tested
             - 'release-*'
