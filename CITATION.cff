@@ -12,3 +12,4 @@ repository-code: https://github.com/briandfoy/github_actions
 title: brian's GitHub workflows for Perl modules
 type: software
 version: 20220125.01
+doi: 10.5281/zenodo.5904482
