@@ -21,7 +21,7 @@ jobs:
             - name: archive
               run: |
                 mkdir -p ${{ steps.names.outputs.dir }}
-                cp CITATION.cff LICENSE README.md *.yml ${{ steps.names.outputs.dir }}
+                cp Changes CITATION.cff LICENSE README.md *.yml ${{ steps.names.outputs.dir }}
                 tar -czf ${{ steps.names.outputs.dist }} ${{ steps.names.outputs.dir }}
             - name: release
               uses: actions/create-release@v1
