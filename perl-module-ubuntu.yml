@@ -50,7 +50,6 @@ jobs:
                 - '5.30'
                 - '5.32'
                 - 'latest'
-
         container:
             image: perl:${{ matrix.perl-version }}
         steps:
