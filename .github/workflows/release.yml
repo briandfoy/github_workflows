@@ -1,0 +1,44 @@
+name: release
+on:
+    push:
+        branches:
+            - 'master'
+        tags:
+            - 'release-*'
+jobs:
+    release:
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: actions/checkout@v2
+            - name: version
+              run: echo "::set-output name=version::$(grep '# version' *.yml | awk '{ print $3 }' | sort | tail -1)"
+              id: version
+            - name: names
+              run: echo "::set-output name=dir::brians-perl-module-github-workflows-${{ steps.version.outputs.version }}"
+              run: echo "::set-output name=dist::brians-perl-module-github-workflows-${{ steps.version.outputs.version }}.tar.gz"
+              id: names
+            - name: archive
+              run: |
+                mdkir -p ${{ steps.names.outputs.dir }}
+                cp CITATION.cff LICENSE README.md *.yml ${{ steps.names.outputs.dir }}
+                tar -czf ${{ steps.names.outputs.dist }} ${{ steps.names.outputs.dir }}
+            - name: release
+              uses: actions/create-release@v1
+              id: create_release
+              env:
+                GITHUB_TOKEN: ${{ github.token }}
+              with:
+                draft: false
+                prerelease: false
+                release_name: ${{ steps.version.outputs.version }}
+                tag_name: ${{ github.ref }}
+                body_path: Changes
+            - name: upload
+              uses: actions/upload-release-asset@v1
+              env:
+                GITHUB_TOKEN: ${{ github.token }}
+              with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ${{ steps.names.outputs.dist }}
+                asset_name: ${{ steps.names.outputs.dist }}
+                asset_content_type: application/gzip
