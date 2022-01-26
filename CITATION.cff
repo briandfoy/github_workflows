@@ -1,0 +1,14 @@
+abstract: brian's GitHub workflows for Perl modules
+authors:
+- family-names: foy
+  given-names: brian d
+  orcid: 0000-0002-0283-8283
+cff-version: 1.2.0
+date-released: 2022-01-25
+license: Artistic-2.0
+license-url: https://github.com/briandfoy/github_actions/LICENSE
+message: The GitHub page for this module provides formatted citations
+repository-code: https://github.com/briandfoy/github_actions
+title: brian's GitHub workflows for Perl modules
+type: software
+version: 20220125.01
