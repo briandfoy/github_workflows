@@ -90,7 +90,7 @@ jobs:
             - name: Author tests
               if: hashFiles('xt') != ''
               run: |
-                cpan -M https://www.cpan.org -T App::prove
+                cpan -M https://www.cpan.org -T Test::CPAN::Changes
                 prove -r -b xt
 # Running tests in parallel should be faster, but it's also more
 # tricky in cases where different tests share a feature, such as a
