@@ -86,6 +86,12 @@ jobs:
               run: |
                 perl Makefile.PL
                 make test
+# Run author tests, but only if there's an xt/ directory
+            - name: Author tests
+              if: hashFiles('xt') != ''
+              run: |
+                cpan -M https://www.cpan.org -T App::prove
+                prove -r -b xt
 # Running tests in parallel should be faster, but it's also more
 # tricky in cases where different tests share a feature, such as a
 # file they want to write to. Parallel tests can stomp on each other.
