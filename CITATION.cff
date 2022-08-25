@@ -6,9 +6,9 @@ authors:
 cff-version: 1.2.0
 date-released: 2022-01-25
 license: Artistic-2.0
-license-url: https://github.com/briandfoy/github_actions/LICENSE
+license-url: https://github.com/briandfoy/github_workflows/LICENSE
 message: The GitHub page for this module provides formatted citations
-repository-code: https://github.com/briandfoy/github_actions
+repository-code: https://github.com/briandfoy/github_workflows
 title: brian's GitHub workflows for Perl modules
 type: software
 version: 20220125.01
