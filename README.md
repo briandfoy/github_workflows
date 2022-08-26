@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5904482.svg)](https://doi.org/10.5281/zenodo.5904482)
 
-My personal [GitHub workflows](https://github.com/features/actions) for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE)
+My personal [GitHub workflows](https://github.com/features/actions) for testing Perl modules. These files go in _.github/workflows/_ in each repo. Everything is available under the [Artistic 2.0 License](LICENSE).
 
 * [macOS](perl-module-macos.yml)
 * [Ubuntu](perl-module-ubuntu.yml)
@@ -17,7 +17,7 @@ I can trigger or ignore workflows or individual jobs. I'm mostly interested in s
 
 Other things I'll explore:
 
-* skip or Trigger based on files
+* skip or trigger based on files
 
 I'm not so interested in inspecting the environment, but that's not anything particularly special. Checking a [context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions) is conceptually the same as checking any other context.
 
@@ -31,7 +31,7 @@ A workflow or a job can run if and only if a condition is true:
 ### Ignoring things
 
 Sometimes I have a problem with one platform or part of the system. I
-want to run some actions but not others. Instead of queueing all these builds and hoping the one I want runs soon, I just ignore a lot of them:
+want to run some workflows for some situations but not others. Instead of queueing all these builds and hoping the one I want runs soon, I just ignore a lot of them:
 
 * [workflow ignores certain branches](.github/workflows/branches-ignore-macos-ubuntu.yml)
 * [jobs ignore certain branches](.github/workflows/check-branch.yml)
