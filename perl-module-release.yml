@@ -21,7 +21,7 @@ jobs:
         container:
             image: perl:${{ matrix.perl-version }}
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 # Some older versions of Perl have trouble with hostnames in certs. I
 # haven't figured out why.
             - name: Setup environment
