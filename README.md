@@ -47,6 +47,7 @@ want to run some workflows for some situations but not others. Instead of queuei
 * [GitHub Action for Perl Critic](https://github.com/marketplace/actions/github-action-for-perl-critic)
 * [First steps with Github workflows](https://www.claudiokuenzler.com/blog/913/first-steps-github-actions-code-syntax-validation)
 * [Setup Perl environment](https://github.com/marketplace/actions/setup-perl-environment)
+* [Perl/docker-perl-tester: Docker images with pre-installed modules for testing](https://github.com/Perl/docker-perl-tester)
 
 ## You might also like
 
