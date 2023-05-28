@@ -69,7 +69,6 @@ jobs:
               id: extract
             - name: upload
               uses: softprops/action-gh-release@v1
-              if: startsWith(github.ref, 'refs/tags/')
               with:
                 body_path: Changes-latest
                 draft: false
