@@ -60,7 +60,7 @@ jobs:
                 make dist 2>/dev/null | grep Created | awk '{ print "ASSET_NAME=" $2 }' >> $GITHUB_ENV
             - name: version
               run: |
-                perl -le '$v = $ARGV[0] =~ m/(.*?).tar.gz/; print qq(version=$v)' *.tar.gz) >> $GITHUB_OUTPUT
+                perl -le '$v = $ARGV[0] =~ m/(.*?).tar.gz/; print qq(version=$v)' *.tar.gz >> $GITHUB_OUTPUT
               id: version
             - name: Changes extract
               run: |
