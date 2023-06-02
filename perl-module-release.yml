@@ -4,6 +4,11 @@
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
 #
+# This action builds a Perl distribution and adds it as a release
+# on GitHub. This does not upload to PAUSE, but that wouldn't be
+# that hard, but that doesn't fit with my workflow since this part
+# happens after everything else has succeeded.
+#
 # This requires that you configure a repository secret named
 # RELEASE_ACTION_TOKEN with a GitHub Personal Access Token
 # that has "read and write" permissions on Repository/Contents
@@ -14,12 +19,22 @@ permissions:
 
 on:
     push:
+# tag a release commit with "release-....". This workflow then runs
+# whenever it sees that tag, and doesn't run for other commits.
         tags:
             - 'release-*'
+# With workflow_dispatch, you can trigger this manually. This is
+# especially handy when you want to re-run a job that failed because
+# the token had expired. Update the GitHub secret and re-run on the
+# same commit.
     workflow_dispatch:
 
 jobs:
     perl:
+# We need a GitHub secret, so create an Environment named "release"
+# * Go to Settings > Environment (repo settings, not account settings)
+# * Make an environment named "release"
+# * Add a secret named "RELEASE_ACTION_TOKEN" with a GitHub token with repo permissions
         environment: release
         runs-on: ${{ matrix.os }}
         strategy:
