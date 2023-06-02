@@ -45,14 +45,15 @@ jobs:
             - name: Install cpanm and multiple modules
               run: |
                 curl -L https://cpanmin.us | perl - App::cpanminus
-                cpanm --notest IO::Socket::SSL App::Cpan HTTP::Tiny
-                cpan -M https://www.cpan.org -T ExtUtils::MakeMaker Test::Manifest
+                cpanm --notest IO::Socket::SSL App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
 # but that's not a big deal.
             - name: Install dependencies
               run: |
-                cpan -M https://www.cpan.org -T .
+                cpanm --notest --installdeps --with-suggests --with-recommends .
+# This makes the distribution and tests it, but assumes by the time we
+# got here, everything else was already tested.
             - name: Create distro
               run: |
                 perl Makefile.PL
