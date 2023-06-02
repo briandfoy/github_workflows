@@ -35,6 +35,8 @@ jobs:
 # * Go to Settings > Environment (repo settings, not account settings)
 # * Make an environment named "release"
 # * Add a secret named "RELEASE_ACTION_TOKEN" with a GitHub token with repo permissions
+# If you use a different token name, update "RELEASE_ACTION_TOKEN" in the last
+# step in this job.
         environment: release
         runs-on: ${{ matrix.os }}
         strategy:
