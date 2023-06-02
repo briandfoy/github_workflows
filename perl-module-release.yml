@@ -56,11 +56,16 @@ jobs:
 # cpanm first, which is easy. I can install IO::Socket::SSL with that,
 # then switch back to cpan. I didn't explore this further, but what you
 # see here hasn't caused problems for me.
-# Need HTTP::Tiny 0.055 or later.
+#
+# Need HTTP::Tiny 0.055 or later. Probably don't need it at all since I'm
+# not using cpan here.
+#
+# Test::Manifest is there because it's a thing I do. If you are writing
+# modules and don't know what it is, you don't need it.
             - name: Install cpanm and multiple modules
               run: |
                 curl -L https://cpanmin.us | perl - App::cpanminus
-                cpanm --notest IO::Socket::SSL App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
+                cpanm --notest IO::Socket::SSL HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
 # but that's not a big deal.
