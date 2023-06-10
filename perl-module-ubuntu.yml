@@ -87,6 +87,10 @@ jobs:
             - name: Install dependencies
               run: |
                 cpanm --notest --installdeps --with-suggests --with-recommends .
+            - name: Show cpanm failures
+              if:  ${{ failure() }}
+              run: |
+                cat /home/runner/.cpanm/work/*/build.log
             - name: Run tests
               run: |
                 perl Makefile.PL
