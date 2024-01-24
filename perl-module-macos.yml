@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions macOS config for Perl 5 modules
-# version 20220902.001
+# version 20240124.001
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -38,7 +38,7 @@ jobs:
     perl:
         runs-on: macOS-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@latest
             - name: Platform check
               run: uname -a
             - name: Set up Perl
