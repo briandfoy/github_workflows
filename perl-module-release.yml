@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions release config for Perl 5 modules
-# version 20240124.003
+# version 20240709.001
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -13,6 +13,10 @@
 # RELEASE_ACTION_TOKEN with a GitHub Personal Access Token
 # that has "read and write" permissions on Repository/Contents
 name: release
+
+# https://github.com/actions/checkout/issues/1590
+env:
+    ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 permissions:
     contents: write
