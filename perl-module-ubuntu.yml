@@ -144,7 +144,7 @@ jobs:
             - name: Run coverage tests
               if: env.PERL_VERSION != 'v5.8' && env.PERL_VERSION != 'v5.10'
               env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                 cpanm --notest Devel::Cover Devel::Cover::Report::Coveralls
                 perl Makefile.PL
