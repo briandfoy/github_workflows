@@ -1,0 +1,42 @@
+---
+name: validate YAML files
+
+on:
+    push:
+        branches:
+            - '**'
+            - '!**release**'
+        tags-ignore:
+            # I tag release pushes but those should have already been tested
+            - 'release-*'
+        paths:
+            - '.github/workflows/**.yml'
+    pull_request:
+        branches:
+            - '**'
+        paths:
+            - '.github/workflows/**.yml'
+
+jobs:
+    yaml:
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: actions/checkout@v3
+            - name: 'yamllint on repo workflows'
+              uses: karancode/yamllint-github-action@master
+              with:
+                  yamllint_file_or_dir: '.github/workflows'
+                  yamllint_strict: false
+                  yamllint_comment: true
+                  yamllint_config_filepath: yamllint.config
+              env:
+                  YAMLLINT_CONFIG_FILE: yamllint.config
+            - name: 'yamllint on example workflows'
+              uses: karancode/yamllint-github-action@master
+              with:
+                  yamllint_file_or_dir: './perl-module-*.yml'
+                  yamllint_strict: false
+                  yamllint_comment: true
+                  yamllint_config_filepath: yamllint.config
+              env:
+                  YAMLLINT_CONFIG_FILE: yamllint.config
