@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions Ubuntu config for Perl 5 modules
-# version 20240824.001
+# version 20240909.001
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -98,7 +98,7 @@ jobs:
             - name: Install cpanm and multiple modules
               run: |
                 curl -L https://cpanmin.us | perl - App::cpanminus
-                cpanm --notest IO::Socket::SSL App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest Test::More
+                cpanm --notest IO::Socket::SSL LWP::Protocol::https App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest Test::More
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
 # but that's not a big deal.
