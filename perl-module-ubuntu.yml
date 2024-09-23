@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions Ubuntu config for Perl 5 modules
-# version 20240909.001
+# version 20240923.001
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -48,7 +48,9 @@ on:
             - 'LICENSE'
             - 'README.pod'
     pull_request:
-
+    # weekly build on the master branch just to see what CPAN is doing
+    schedule:
+        - cron: "37 3 * * 0"
 jobs:
     perl:
         environment: automated_testing
@@ -92,7 +94,9 @@ jobs:
                 echo "PERL_LWP_SSL_VERIFY_HOSTNAME=0" >> $GITHUB_ENV
 # HTML::Tagset bumped its minimum version to v5.10 for no good reason
 # but this is a prereq to LWP, which runs on v5.8. To get around this,
-# download the tarball and fix it for v5.8.
+# download the tarball and fix it for v5.8. Install it before we try
+# to install things that depend on it. More recent versions will
+# install it normally.
 # 1. remove the META files which have references to v5.10 and ignore
 # the warnings
 # 2. fix Makefile.PL to remove two references to v5.10
