@@ -2,6 +2,10 @@
 
 These are the changes for [brian's Perl module GitHub workflows](https://github.com/briandfoy/github_actions).
 
+## 20250101.001
+
+* Ignore `SECURITY.md` and `README.md` in linux, macos, and windows workflows
+
 ## 20220125.002
 
 * other workflows don't trigger on a release branch
