@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions Ubuntu config for Perl 5 modules
-# version 20250101.001
+# version 20250125.001
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -8,6 +8,16 @@
 # in your repo settings. Or not. It still works if it isn't defined.
 # In that environment, add whatever environment variables or secrets
 # that you want.
+#
+# Variables that you can set in the "automated_testing" environment:
+#
+# EXTRA_CPAN_MODULES  - extra arguments to the first call to cpan.
+#                       Just use EXTRA_CPANM_MODULES though. This is
+#                       here for legacy
+#
+# EXTRA_CPANM_MODULES - extra arguments to the first call to cpanm.
+#                       this is useful to install very particular
+#                       modules, such as DBD::mysql@4.050
 ---
 name: ubuntu
 
@@ -112,7 +122,7 @@ jobs:
                 rm META.*
                 mv Makefile.PL Makefile.PL.orig
                 perl -n -e 'next if /(^use 5)|(MIN_PERL)/; print' Makefile.PL.orig > Makefile.PL
-                cpan -T .
+                cpan -M http://www.cpan.org -T .
                 cd ..
                 pwd
                 ls
@@ -125,13 +135,14 @@ jobs:
             - name: Install cpanm and multiple modules
               run: |
                 curl -L https://cpanmin.us | perl - App::cpanminus
-                cpanm --notest IO::Socket::SSL LWP::Protocol::https App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest Test::More
+                cpanm --notest IO::Socket::SSL LWP::Protocol::https App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest Test::More ${{ vars.EXTRA_CPANM_MODULES }}
+                cpan -M http://www.cpan.org -T Test::Manifest ${{ vars.EXTRA_CPAN_MODULES }}
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
 # but that's not a big deal.
             - name: Install dependencies
               run: |
-                cpanm --notest --installdeps --with-suggests --with-recommends . ${{ vars.EXTRA_CPAN_MODULES }}
+                cpanm --notest --installdeps --with-suggests --with-recommends .
             - name: Show cpanm failures
               if: ${{ failure() }}
               run: |
