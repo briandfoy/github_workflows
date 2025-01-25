@@ -91,9 +91,8 @@ jobs:
 # mainline modules are good and save lots of CI minutes.
             - name: Install cpanm and multiple modules
               run: |
-                curl -L https://cpanmin.us | perl - App::cpanminus
+                cpan -M http://www.cpan.org -T App::cpanminus ${{ vars.EXTRA_CPAN_MODULES }}
                 cpanm --notest IO::Socket::SSL LWP::Protocol::https App::Cpan HTTP::Tiny ExtUtils::MakeMaker Test::Manifest Test::More ${{ vars.EXTRA_CPANM_MODULES }}
-                cpan -M http://www.cpan.org -T Test::Manifest ${{ vars.EXTRA_CPAN_MODULES }}
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
 # but that's not a big deal.

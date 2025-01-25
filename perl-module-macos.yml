@@ -88,8 +88,7 @@ jobs:
             - name: Prepare cpan
               run: |
                 openssl version
-                cpan -M http://www.cpan.org -T IO::Socket::SSL HTTP::Tiny
-                cpan -M https://www.cpan.org -T ExtUtils::MakeMaker Test::Manifest ${{ vars.EXTRA_CPAN_MODULES }}
+                cpan -M https://www.cpan.org -T App::cpanminus IO::Socket::SSL HTTP::Tiny ExtUtils::MakeMaker Test::Manifest ${{ vars.EXTRA_CPAN_MODULES }}
                 cpanm --notest Test::Manifest  ${{ vars.EXTRA_CPANM_MODULES }}
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
