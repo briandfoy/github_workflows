@@ -106,7 +106,7 @@ jobs:
             - name: setup platform
               run: |
                 apt-get upgrade
-                apt-get -y install curl ${{ var.UBUNTU_EXTRA_APT_GET }}
+                apt-get -y install curl ${{ vars.UBUNTU_EXTRA_APT_GET }}
             - name: Perl version check
               run: |
                 perl -V
