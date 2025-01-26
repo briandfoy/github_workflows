@@ -79,6 +79,7 @@ jobs:
             - uses: actions/checkout@v3
             - name: Set up Perl
               run: |
+                choco uninstall strawberryperl
                 choco upgrade strawberryperl
                 echo "C:\strawberry\c\bin"         | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
                 echo "C:\strawberry\perl\site\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
