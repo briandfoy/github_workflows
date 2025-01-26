@@ -2,10 +2,11 @@
 
 These are the changes for [brian's Perl module GitHub workflows](https://github.com/briandfoy/github_actions).
 
-## 20250116.001
+## 20250126.001
 
 * Windows doesn't like cpanm installing App::Cpan because it thinks
 the files are busy. So, just don't do that.
+* Add `UBUNTU_EXTRA_APT_GET` env var for extra packages to install
 
 ## 20250125.002
 
