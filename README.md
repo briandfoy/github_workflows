@@ -53,4 +53,3 @@ want to run some workflows for some situations but not others. Instead of queuei
 ## You might also like
 
 * [brian's Standard Configuration for Perl 5 Modules on AppVeyor](https://github.com/briandfoy/brians_perl_modules_appveyor_config)
-* [brian's Standard Configuration for Perl 5 Modules on Travis CI](https://github.com/briandfoy/brians_perl_modules_travis_config)
