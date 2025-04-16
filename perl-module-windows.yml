@@ -74,7 +74,7 @@ jobs:
                 os:
                     - windows-2022
                     - windows-2025
-       steps:
+        steps:
             - run: git config --global core.autocrlf false
             - uses: actions/checkout@v3
             - name: Set up Perl
