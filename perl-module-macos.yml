@@ -72,6 +72,9 @@ jobs:
         runs-on: macOS-latest
         steps:
             - uses: actions/checkout@v3
+            - name: git corrections
+              run: |
+                git config --global --add safe.directory "$(pwd)"
             - name: Platform check
               run: uname -a
             - name: Set up Perl
