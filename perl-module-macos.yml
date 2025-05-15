@@ -143,4 +143,4 @@ jobs:
               run: |
                 cpan -M https://www.cpan.org -T Devel::Cover Devel::Cover::Report::Coveralls
                 perl Makefile.PL
-                cover -test -report coveralls
+                cover -test +ignore 'Makefile.PL' -report coveralls
