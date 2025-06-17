@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions Ubuntu config for Perl 5 modules
-# version 20250617.002
+# version 20250617.003
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -166,6 +166,7 @@ jobs:
                 path: |
                   /usr/local/lib/perl5
                   /usr/local/bin/cover
+                  /usr/local/bin/cpan
 # We cannot reuse cache keys, so we'll delete it and then save it again
 # There are various hacks for this, but GitHub has so far declined to
 # do what so many people want. This seems like a long way to go to do
@@ -250,3 +251,4 @@ jobs:
                 path: |
                   /usr/local/lib/perl5
                   /usr/local/bin/cover
+                  /usr/local/bin/cpan
