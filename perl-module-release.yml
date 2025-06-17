@@ -79,17 +79,6 @@ jobs:
             - name: Setup environment
               run: |
                 echo "PERL_LWP_SSL_VERIFY_HOSTNAME=0" >> $GITHUB_ENV
-# Restore the last module installation for this OS/perl combination. This
-# saves several minutes in some cases. When cpan installs updates, the
-# 'save' counterpart for 'restore' will update the cache.
-            - name: Restore Perl modules
-              id: perl-modules-cache-restore
-              uses: actions/cache/restore@v4
-              with:
-                key: release-${{ runner.os }}-${{ matrix.perl-version }}-modules
-                path: |
-                  /usr/local/lib/perl5
-                  /usr/local/bin/cover
 # I had some problems with openssl on Ubuntu, so I punted by installing
 # cpanm first, which is easy. I can install IO::Socket::SSL with that,
 # then switch back to cpan. I didn't explore this further, but what you
@@ -149,13 +138,3 @@ jobs:
                     ${{ steps.attestation.outputs.bundle-path }}
                     ${{ vars.EXTRA_RELEASE_PATHS }}
                   token: ${{ secrets.RELEASE_ACTION_TOKEN }}
-# Now always save the Perl modules in case we updated some versions
-            - name: Save Perl modules
-              id: perl-modules-cache-save
-              uses: actions/cache/save@v4
-              if: always()
-              with:
-                key: ${{ steps.perl-modules-cache-restore.outputs.cache-primary-key }}
-                path: |
-                  /usr/local/lib/perl5
-                  /usr/local/bin/cover
