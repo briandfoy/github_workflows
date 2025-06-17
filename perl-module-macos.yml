@@ -77,9 +77,6 @@ jobs:
                 git config --global --add safe.directory "$(pwd)"
             - name: Platform check
               run: uname -a
-            - name: Set up platform
-              run: |
-                brew install gh
             - name: Set up Perl
               run: |
                 brew install perl
